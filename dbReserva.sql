@@ -27,7 +27,7 @@ BEGIN
         nombre VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         telefono VARCHAR(20)
-        -- Puedes agregar otros campos como dirección, ciudad, etc.
+        -- Puedes agregar otros campos como direcciï¿½n, ciudad, etc.
     );
 END
 GO
@@ -37,12 +37,12 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Reser
 BEGIN
     CREATE TABLE Reservas (
         id_reserva INT PRIMARY KEY,
-        id_tour INT,
-        id_cliente VARCHAR(12),
+        tour INT,
+        cliente VARCHAR(12),
         fecha_reserva DATE,
         cantidad_personas INT,
-        FOREIGN KEY (id_tour) REFERENCES Tours(id_tour),
-        FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+        FOREIGN KEY (tour) REFERENCES Tours(id_tour),
+        FOREIGN KEY (cliente) REFERENCES Clientes(id_cliente)
     );
 END
 GO
@@ -52,10 +52,10 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Pagos
 BEGIN
     CREATE TABLE Pagos (
         id_pago INT PRIMARY KEY,
-        id_reserva INT,
+        reserva INT,
         monto DECIMAL(10, 2) NOT NULL,
         fecha_pago DATE,
-        FOREIGN KEY (id_reserva) REFERENCES Reservas(id_reserva)
+        FOREIGN KEY (reserva) REFERENCES Reservas(id_reserva)
     );
 END
 GO
