@@ -105,11 +105,26 @@
                     <asp:TextBox ID="txtCantidadPersonas" runat="server" TextMode="Number"></asp:TextBox>
                 </div>
                 <div>
+                    <label for="calFechaReserva">Fecha de Reserva:</label>
+                    <asp:Calendar ID="calFechaReserva" runat="server" />
+                </div>
+                <div>
                     <asp:Button ID="btnAgregarReserva" runat="server" Text="Agregar Reserva" OnClick="btnAgregarReserva_Click1"  />
                 </div>
+                
                 <!-- Control Literal para mostrar mensajes -->
                 <asp:Literal ID="lblMensajeReserva" runat="server" Visible="false" />
             </div>
+            <h2>Reservas</h2>
+    <asp:GridView ID="GridViewReservas" runat="server" AutoGenerateColumns="False" CssClass="table">
+    <Columns>
+        <asp:BoundField DataField="Tour" HeaderText="Tour" />
+        <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
+        <asp:BoundField DataField="FechaReserva" HeaderText="Fecha de Reserva" DataFormatString="{0:dd/MM/yyyy}" />
+        <asp:BoundField DataField="CantidadPersonas" HeaderText="Cantidad de Personas" />
+    </Columns>
+</asp:GridView>
+
 
         </div>
     </form>

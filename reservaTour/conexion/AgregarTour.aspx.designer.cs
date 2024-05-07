@@ -166,6 +166,15 @@ namespace reservaTour.conexion {
         protected global::System.Web.UI.WebControls.TextBox txtCantidadPersonas;
         
         /// <summary>
+        /// Control calFechaReserva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calFechaReserva;
+        
+        /// <summary>
         /// Control btnAgregarReserva.
         /// </summary>
         /// <remarks>
@@ -182,5 +191,14 @@ namespace reservaTour.conexion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblMensajeReserva;
+        
+        /// <summary>
+        /// Control GridViewReservas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewReservas;
     }
 }

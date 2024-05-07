@@ -20,8 +20,7 @@ namespace reservaTour.conexion
             {
                 CargarTours();
                 CargarClientes();
-
-             
+                CargarReservas();
             }
         }
 
@@ -88,11 +87,11 @@ namespace reservaTour.conexion
         // Método para cargar los tours en el GridView
         private void CargarTours()
         {
-            // Crear una lista para almacenar los tours
-            List<Tour> tours = new List<Tour>();
-
             // Consulta SQL para obtener todos los tours de la base de datos
             string query = "SELECT nombre, descripcion, precio FROM Tours";
+
+            // Crear una lista para almacenar los tours
+            List<Tour> tours = new List<Tour>();
 
             // Crear y abrir una nueva conexión a la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -117,17 +116,23 @@ namespace reservaTour.conexion
                 }
             }
 
+            // Asignar la lista de tours al DropDownList ddlTours
+            ddlTours.DataSource = tours;
+            ddlTours.DataTextField = "Nombre"; // Establecer el campo a mostrar en el DropDownList
+            ddlTours.DataValueField = "Nombre"; // Establecer el campo como valor seleccionado
+            ddlTours.DataBind();
+
             // Asignar la lista de tours al GridView
             GridViewTours.DataSource = tours;
             GridViewTours.DataBind();
         }
         private void CargarClientes()
         {
-            // Crear una lista para almacenar los clientes
-            List<Cliente> clientes = new List<Cliente>();
-
             // Consulta SQL para obtener todos los clientes de la base de datos
             string query = "SELECT id_cliente, nombre, email, telefono FROM Clientes";
+
+            // Crear una lista para almacenar los clientes
+            List<Cliente> clientes = new List<Cliente>();
 
             // Crear y abrir una nueva conexión a la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -153,10 +158,17 @@ namespace reservaTour.conexion
                 }
             }
 
+            // Asignar la lista de clientes al DropDownList ddlClientes
+            ddlClientes.DataSource = clientes;
+            ddlClientes.DataTextField = "Nombre"; // Establecer el campo a mostrar en el DropDownList
+            ddlClientes.DataValueField = "IdCliente"; // Establecer el campo como valor seleccionado
+            ddlClientes.DataBind();
+
             // Asignar la lista de clientes al GridView
             GridViewClientes.DataSource = clientes;
             GridViewClientes.DataBind();
         }
+
 
         protected void btnAgregarCliente_Click(object sender, EventArgs e)
         {
@@ -212,15 +224,85 @@ namespace reservaTour.conexion
         }
 
 
+
         protected void btnAgregarReserva_Click1(object sender, EventArgs e)
         {
             // Obtener los valores ingresados por el usuario
             string tourSeleccionado = ddlTours.SelectedValue;
             string clienteSeleccionado = ddlClientes.SelectedValue;
-            int cantidadPersonas = int.Parse(txtCantidadPersonas.Text);
+            int cantidadPersonas;
+
+            if (!int.TryParse(txtCantidadPersonas.Text, out cantidadPersonas))
+            {
+                lblMensajeReserva.Text = "La cantidad de personas debe ser un número entero.";
+                return;
+            }
 
             // Crear la consulta SQL para insertar la nueva reserva
-            string query = "INSERT INTO Reservas (tour, cliente, fecha_reserva, cantidad_personas) VALUES (@Tour, @Cliente, @FechaReserva, @CantidadPersonas)";
+            string queryReserva = "INSERT INTO Reservas (tour, cliente, fecha_reserva, cantidad_personas) OUTPUT INSERTED.id_reserva VALUES (@Tour, @Cliente, @FechaReserva, @CantidadPersonas)";
+
+            // Crear la consulta SQL para insertar el nuevo pago asociado a la reserva
+            string queryPago = "INSERT INTO Pagos (reserva_id, monto, fecha_pago) VALUES (@ReservaId, @Monto, @FechaPago)";
+
+            // Crear y abrir una nueva conexión a la base de datos
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Iniciar una transacción para asegurar la integridad de los datos
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        int reservaId;
+                        // Insertar la reserva
+                        using (SqlCommand commandReserva = new SqlCommand(queryReserva, connection, transaction))
+                        {
+                            commandReserva.Parameters.AddWithValue("@Tour", tourSeleccionado);
+                            commandReserva.Parameters.AddWithValue("@Cliente", clienteSeleccionado);
+                            commandReserva.Parameters.AddWithValue("@FechaReserva", DateTime.Now); // Fecha actual
+                            commandReserva.Parameters.AddWithValue("@CantidadPersonas", cantidadPersonas);
+                            reservaId = (int)commandReserva.ExecuteScalar(); // Obtener el ID de la reserva insertada
+                        }
+
+                        // Insertar el pago asociado a la reserva
+                        using (SqlCommand commandPago = new SqlCommand(queryPago, connection, transaction))
+                        {
+                            commandPago.Parameters.AddWithValue("@ReservaId", reservaId); // Asociar el pago a la reserva
+                                                                                          // Aquí debes proporcionar el monto del pago, por ejemplo:
+                            commandPago.Parameters.AddWithValue("@Monto", 100); // Ejemplo: monto fijo de $100
+                            commandPago.Parameters.AddWithValue("@FechaPago", DateTime.Now); // Fecha actual
+                            commandPago.ExecuteNonQuery(); // Insertar el pago
+                        }
+
+                        // Si llegamos aquí sin lanzar una excepción, confirmamos la transacción
+                        transaction.Commit();
+                        lblMensajeReserva.Text = "La reserva y el pago se agregaron correctamente.";
+                        txtCantidadPersonas.Text = ""; // Limpiar los campos del formulario
+                    }
+                    catch (Exception ex)
+                    {
+                        // Si se produce algún error durante la ejecución de la consulta, hacemos un rollback de la transacción
+                        transaction.Rollback();
+
+                        // Generar el script JavaScript para mostrar una alerta
+                        string script = $@"<script>alert('Error: {ex.Message}');</script>";
+
+                        // Registrar el script en el cliente
+                        ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script);
+                    }
+
+                }
+            }
+        }
+
+        private void CargarReservas()
+        {
+            // Consulta SQL para obtener todas las reservas de la base de datos
+            string query = "SELECT id_reserva, tour, cliente, fecha_reserva, cantidad_personas FROM Reservas";
+
+            // Crear una lista para almacenar las reservas
+            List<Reserva> reservas = new List<Reserva>();
 
             // Crear y abrir una nueva conexión a la base de datos
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -228,40 +310,32 @@ namespace reservaTour.conexion
                 // Crear un comando SQL para ejecutar la consulta
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Agregar parámetros a la consulta SQL
-                    command.Parameters.AddWithValue("@Tour", tourSeleccionado);
-                    command.Parameters.AddWithValue("@Cliente", clienteSeleccionado);
-                    command.Parameters.AddWithValue("@FechaReserva", DateTime.Now); // Fecha actual
-                    command.Parameters.AddWithValue("@CantidadPersonas", cantidadPersonas);
-
-                    try
+                    // Abrir la conexión a la base de datos
+                    connection.Open();
+                    // Ejecutar la consulta SQL y obtener los datos
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Abrir la conexión a la base de datos
-                        connection.Open();
-                        // Ejecutar la consulta SQL para insertar la nueva reserva
-                        int rowsAffected = command.ExecuteNonQuery();
-                        // Comprobar si se insertó correctamente
-                        if (rowsAffected > 0)
+                        // Recorrer los resultados y agregarlos a la lista de reservas
+                        while (reader.Read())
                         {
-                            // Si se insertó correctamente, mostrar un mensaje de éxito
-                            lblMensajeReserva.Text = "La reserva se agregó correctamente.";
-                            // Limpiar los campos del formulario
-                            txtCantidadPersonas.Text = "";
+                            int idReserva = reader.GetInt32(0);
+                            int tourId = reader.GetInt32(1); // Suponiendo que el campo 'tour' es un ID de tour
+                            string clienteId = reader.GetString(2); // Suponiendo que el campo 'cliente' es un ID de cliente
+                            DateTime fechaReserva = reader.GetDateTime(3);
+                            int cantidadPersonas = reader.GetInt32(4);
+                            reservas.Add(new Reserva { IdReserva = idReserva, TourId = tourId, ClienteId = clienteId, FechaReserva = fechaReserva, CantidadPersonas = cantidadPersonas });
                         }
-                        else
-                        {
-                            // Si no se insertó correctamente, mostrar un mensaje de error
-                            lblMensajeReserva.Text = "Error al agregar la reserva.";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Si se produce algún error durante la ejecución de la consulta, mostrar un mensaje de error
-                        lblMensajeReserva.Text = "Error: " + ex.Message;
                     }
                 }
             }
+
+            // Asignar la lista de reservas al GridView
+            GridViewReservas.DataSource = reservas;
+            GridViewReservas.DataBind();
         }
+
+
+
     }
 
     // Clase para representar un tour
@@ -278,4 +352,22 @@ namespace reservaTour.conexion
         public string Email { get; set; }
         public string Telefono { get; set; }
     }
+    public class Reserva
+    {
+        public int IdReserva { get; set; }
+        public int TourId { get; set; } // Propiedad para almacenar el ID del tour
+        public string ClienteId { get; set; } // Propiedad para almacenar el ID del cliente
+        public DateTime FechaReserva { get; set; }
+        public int CantidadPersonas { get; set; }
+    }
+
+    public class Pago
+    {
+        public int IdPago { get; set; }
+        public int IdReserva { get; set; }
+        public decimal Monto { get; set; }
+        public DateTime FechaPago { get; set; }
+    }
+
+
 }
