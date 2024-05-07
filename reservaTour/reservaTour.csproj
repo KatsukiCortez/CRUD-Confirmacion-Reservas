@@ -67,10 +67,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
+    <Content Include="conexion\AgregarTour.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="conexion\AgregarTour.aspx.cs">
+      <DependentUpon>AgregarTour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="conexion\AgregarTour.aspx.designer.cs">
+      <DependentUpon>AgregarTour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="conexion\AgregarTour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
