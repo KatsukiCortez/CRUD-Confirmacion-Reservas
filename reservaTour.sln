@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reservaTour", "reservaTour\reservaTour.csproj", "{DE071055-49D5-4504-8687-4AD43A3A4C73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE071055-49D5-4504-8687-4AD43A3A4C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE071055-49D5-4504-8687-4AD43A3A4C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE071055-49D5-4504-8687-4AD43A3A4C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE071055-49D5-4504-8687-4AD43A3A4C73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {852DCDA0-2E8E-432B-8019-9B2666085C60}
+	EndGlobalSection
+EndGlobal

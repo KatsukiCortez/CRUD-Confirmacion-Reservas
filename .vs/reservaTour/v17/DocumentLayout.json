@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|c:\\users\\adam_\\onedrive\\escritorio\\9no semestre\\ingenieria web\\trabajos\\cuscop\u00EBruadventure-crud-somee\\crud-confirmacion-reservas\\reservatour\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|solutionrelative:reservatour\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|c:\\users\\adam_\\onedrive\\escritorio\\9no semestre\\ingenieria web\\trabajos\\cuscop\u00EBruadventure-crud-somee\\crud-confirmacion-reservas\\reservatour\\conexion\\agregartour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|solutionrelative:reservatour\\conexion\\agregartour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|c:\\users\\adam_\\onedrive\\escritorio\\9no semestre\\ingenieria web\\trabajos\\cuscop\u00EBruadventure-crud-somee\\crud-confirmacion-reservas\\reservatour\\web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|solutionrelative:reservatour\\web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|c:\\users\\adam_\\onedrive\\escritorio\\9no semestre\\ingenieria web\\trabajos\\cuscop\u00EBruadventure-crud-somee\\crud-confirmacion-reservas\\reservatour\\conexion\\agregartour.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{DE071055-49D5-4504-8687-4AD43A3A4C73}|reservaTour\\reservaTour.csproj|solutionrelative:reservatour\\conexion\\agregartour.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\Web.config",
+              "RelativeDocumentMoniker": "reservaTour\\Web.config",
+              "ToolTip": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\Web.config",
+              "RelativeToolTip": "reservaTour\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-10T16:43:33.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Web.Debug.config",
+              "DocumentMoniker": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\Web.Debug.config",
+              "RelativeDocumentMoniker": "reservaTour\\Web.Debug.config",
+              "ToolTip": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\Web.Debug.config",
+              "RelativeToolTip": "reservaTour\\Web.Debug.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-05-10T16:43:31.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AgregarTour.cs",
+              "DocumentMoniker": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\conexion\\AgregarTour.cs",
+              "RelativeDocumentMoniker": "reservaTour\\conexion\\AgregarTour.cs",
+              "ToolTip": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\conexion\\AgregarTour.cs",
+              "RelativeToolTip": "reservaTour\\conexion\\AgregarTour.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAA5wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-10T16:43:25.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AgregarTour.aspx",
+              "DocumentMoniker": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\conexion\\AgregarTour.aspx",
+              "RelativeDocumentMoniker": "reservaTour\\conexion\\AgregarTour.aspx",
+              "ToolTip": "C:\\Users\\Adam_\\OneDrive\\Escritorio\\9no Semestre\\Ingenieria Web\\Trabajos\\CuscoP\u00EBruAdventure-Crud-Somee\\CRUD-Confirmacion-Reservas\\reservaTour\\conexion\\AgregarTour.aspx",
+              "RelativeToolTip": "reservaTour\\conexion\\AgregarTour.aspx",
+              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-10T16:41:25.776Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
